@@ -9,6 +9,7 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrartionFormWithBaseTests extends TestBase {
 
@@ -25,8 +26,13 @@ public class RegistrartionFormWithBaseTests extends TestBase {
     File picture = new File("src/cat.jpg");
 
     @Test
-    void fillFormTest(){
-        open("/automation-practice-form");
+    void fillFormTest() {
+        step("Open registrations form", () -> {
+            open("/automation-practice-form");
+            $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+            executeJavaScript("$('footer').remove()");
+            executeJavaScript("$('#fixedban').remove()");
+        });
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
