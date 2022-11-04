@@ -22,7 +22,7 @@ public class RegistrartionFormWithBaseTests extends TestBase {
     }
 
 
-   // File picture = new File("src/cat.jpg");
+    File picture = new File("src/cat.jpg");
 
     @Test
     void fillFormTest(){
@@ -41,7 +41,7 @@ public class RegistrartionFormWithBaseTests extends TestBase {
         $("#subjectsInput").setValue("Maths").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#hobbiesWrapper").$(byText("Music")).click();
-       // $("#uploadPicture").uploadFile(picture);
+        $("#uploadPicture").uploadFile(picture);
         $("#currentAddress").setValue("Ulitsa Pravdy");
 
         executeJavaScript("$('footer').remove()");
